@@ -6,7 +6,7 @@
 /*   By: olaaroub <olaaroub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 17:04:27 by olaaroub          #+#    #+#             */
-/*   Updated: 2023/12/04 15:13:46 by olaaroub         ###   ########.fr       */
+/*   Updated: 2023/12/04 22:18:23 by olaaroub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*ft_strdup( char *s1)
 	int	len;
 
 	i = 0;
-	if(!s1)
+	if(s1 == NULL || s1[0] == '\0')
 		return NULL;
 	len = ft_strlen(s1);
 	nv = malloc(sizeof(char) * len + 1);

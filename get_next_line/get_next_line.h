@@ -6,7 +6,7 @@
 /*   By: olaaroub <olaaroub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 17:05:12 by olaaroub          #+#    #+#             */
-/*   Updated: 2023/12/04 15:24:50 by olaaroub         ###   ########.fr       */
+/*   Updated: 2023/12/04 22:24:19 by olaaroub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define GET_NEXT_LINE_H
 
 #ifndef BUFFER_SIZE
-#define BUFFER_SIZE  7
+#define BUFFER_SIZE  10
 #endif
 
 #include <stdio.h>

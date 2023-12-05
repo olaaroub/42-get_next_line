@@ -6,7 +6,7 @@
 /*   By: olaaroub <olaaroub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 20:24:43 by olaaroub          #+#    #+#             */
-/*   Updated: 2023/12/04 15:24:34 by olaaroub         ###   ########.fr       */
+/*   Updated: 2023/12/04 22:52:07 by olaaroub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,37 +33,36 @@ char    *gnl(int fd)
     while (readed)
     {
         readed = read(fd, buf, BUFFER_SIZE);
+        if((readed == 0 && !buf) || buf[0] == '\0')
+            return (NULL);
+        buf[readed] = '\0';
         tmp = ft_strdup(stat);
-        free (stat);
+        free(stat);
         stat = NULL;
         stat = ft_strjoin(tmp, buf);
         free(tmp);
         tmp = NULL;
-        printf("%s\n", stat);
-        if(ft_strchr(buf, '\n') || readed <= 0)
+        if(ft_strchr(buf, '\n'))
             break;
     }
+
     char    *line;
     char    *newline;
-    // newline = ft_strchr(stat, '\n')+1;
-    if (ft_strchr(stat, '\n') )
+    if (ft_strchr(stat, '\n'))
     {
-        newline = ft_strchr(stat, '\n')+1;
+        newline = ft_strchr(stat, '\n') + 1;
         to_allocate = newline - stat;
         line = ft_substr(stat, 0, to_allocate);
         free(stat);
+        stat = NULL;
         stat = ft_strdup(newline);
-        free(newline);
+        newline = NULL;
     }
     else
     {
         line = ft_strdup(stat);
-        free(stat);
-        stat = NULL;
     }
-    printf("%s\n", line);
     return line;
-    free(line);
 }
 
 int main()
@@ -71,5 +70,8 @@ int main()
     int fd;
 
     fd = open("file.txt", O_RDONLY);
-    printf("%s",gnl(fd));
+    printf("result number 1 : %s",gnl(fd));
+    printf("result number 2 : %s",gnl(fd));
+    printf("result number 3 : %s",gnl(fd));
+
 }
