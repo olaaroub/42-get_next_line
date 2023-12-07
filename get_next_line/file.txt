@@ -1,2 +1,0 @@
-hello there this is line 1.
-hey this is line 2.
