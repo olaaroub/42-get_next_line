@@ -6,7 +6,7 @@
 /*   By: olaaroub <olaaroub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 12:20:11 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/12/07 16:51:35 by olaaroub         ###   ########.fr       */
+/*   Updated: 2023/12/07 21:15:21 by olaaroub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main_mandatory(void)
 	int	fd;
 
 	fd = open("file.txt", O_RDWR);
-	for(int i = 0; i < 34; i++)
+	for(int i = 0; i < 2; i++)
 	{
 		printf("call NO %d --> %s", i, get_next_line(fd));
 	}
@@ -67,7 +67,7 @@ int	main_why_bonus(void)
 	int	fd1;
 
 	fd = open("empty_line.txt", O_RDWR, 0777);
-	fd0 = open("long_line.txt", O_RDWR, 0777);
+	fd0 = open("file.txt", O_RDWR, 0777);
 	fd1 = open("short_line.txt", O_RDWR, 0777);
 	printf("(fd) 1st call -> %s \n", get_next_line(fd));
 	printf("(fd) 2nd call -> %s \n", get_next_line(fd));
@@ -79,6 +79,8 @@ int	main_why_bonus(void)
 	printf("(fd0) 4th call -> %s \n", get_next_line(fd0));
 	printf("(fd1) 3rd call -> %s \n", get_next_line(fd1));
 	printf("(fd1) 4th call -> %s \n\n", get_next_line(fd1));
+	printf("(fd1) 4th call -> %s \n\n", get_next_line(fd1));
+
 	printf("(fd) 3rd call -> %s \n", get_next_line(fd));
 	close(fd);
 	close(fd0);
@@ -94,9 +96,9 @@ int	main(void)
 	// (Multiple/Single) Long line (2k+ characters):
 	// (Multiple/Single) Short line (< 4 characters, even 1):
 	// (Multiple/Single) Empty line
-	main_mandatory();
+	// main_mandatory();
 	// fd error !
 	// main_error_management();
 	// Why do we need bonus ??
-	// main_why_bonus();
+	main_why_bonus();
 }

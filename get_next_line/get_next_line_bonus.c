@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: olaaroub <olaaroub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/05 15:34:43 by olaaroub          #+#    #+#             */
-/*   Updated: 2023/12/07 17:00:08 by olaaroub         ###   ########.fr       */
+/*   Created: 2023/12/07 21:02:28 by olaaroub          #+#    #+#             */
+/*   Updated: 2023/12/07 21:05:04 by olaaroub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*get_new_line(char *stat)
 {
@@ -98,13 +98,13 @@ char	*get_bytes(char *stat, int fd)
 
 char	*get_next_line(int fd)
 {
-	static char	*stat;
+	static char	*stat[OPEN_MAX];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (free(stat), NULL);
-	stat = get_bytes(stat, fd);
-	line = get_new_line(stat);
-	stat = get_rest(stat);
+		return (free(stat[fd]), NULL);
+	stat[fd] = get_bytes(stat[fd], fd);
+	line = get_new_line(stat[fd]);
+	stat[fd] = get_rest(stat[fd]);
 	return (line);
 }
